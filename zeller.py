@@ -16,6 +16,7 @@ def CalendarioGregoriano(diaDelMes, mes, año):
 
 #DE ACA PARA ABAJO ESCRIBE, SOLO PUEDES LLAMAR FUNCIONES DEFINIDAS PREVIAMENTE (lenguaje interpretado po perrito)
 
+#Ah, y por cierto, cambia lo que quieras, pero la operación de zeller ya esta lista.
 
 
 param1 = int(input("Dia del Mes"))
