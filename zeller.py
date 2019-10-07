@@ -1,11 +1,13 @@
 #Modulo Zeller por: Rodrigo Jiménez para uso en desafío_2
 
+#Implementación: Leandro Vergara.
+
 #modulo = str(-2 % 7)   #En la página de wikipedia dice que muchos lenguajes de programación devuelven esta operación con un -2, y que por ende se usa una modificación
 #print(modulo)          #Sin embargo, comprobé que python devuelve 5, que es lo que devuelve la definición matemática de la operación módulo
 
                     #NOTA DE JIMENEZ DE UN FUTURO PROXIMO: al final abajo había una mejor implementación de software, que funciona perfectamente en python.
 
-#Así que esta función está programada con la versión original del algoritmo.
+#Así que esta función NO está programada con la versión original del algoritmo.
 def CalendarioGregoriano(diaDelMes, mes, año):
     diaDelMes = int(diaDelMes)
     mes = int(mes)
@@ -19,18 +21,6 @@ def CalendarioGregoriano(diaDelMes, mes, año):
 
 #DE ACA PARA ABAJO ESCRIBE, SOLO PUEDES LLAMAR FUNCIONES DEFINIDAS PREVIAMENTE (lenguaje interpretado po perrito)
 
-#Ah, y por cierto, cambia lo que quieras, pero la operación de zeller ya esta lista.
-
-
-#param1 = int(input("Dia del Mes"))
-#param2 = int(input("Mes"))
-#param3 = int(input("Año"))
-
-#diasemana = CalendarioGregoriano(param1,param2,param3) #Asi puedes llamar la función, en cualquier del programa, 
-
-#print(diasemana)
-
-#Tu pega: separar las variables de las lineas (split) e ingresarlas en la función
 
 countL = 0
 countM = 0
@@ -72,49 +62,61 @@ for linea in lineas:
 diasMayores = ""
 diasMenores = ""  
         
-if countL >= countM and countL >= countI and countL >= countJ and countL >= countV and countL >= countS and countL >= countD:
-    diasMayores += " Lunes"
-elif countL <= countM and countL <= countI and countL <= countJ and countL <= countV and countL <= countS and countL <= countD:
-    print("menor: lunes")
+numeroMayorNacimientos = 0
+numeroMenorNacimientos = 0
 
+if countL >= countM and countL >= countI and countL >= countJ and countL >= countV and countL >= countS and countL >= countD:
+    diasMayores += "- Lunes;"
+    numeroMayorNacimientos = countL
+elif countL <= countM and countL <= countI and countL <= countJ and countL <= countV and countL <= countS and countL <= countD:
+    diasMenores += "- Lunes;"
+    numeroMenorNacimientos = countL
 
 if countM >= countL and countM >= countI and  countM >= countJ and countM >= countV and countM >= countS and countM >= countD:
-    diasMayores += " Lunes"
+    diasMayores += "- Martes;"
+    numeroMayorNacimientos = countM
 elif countM <= countL and countM <= countI and countM <= countJ and countM <= countV and countM <= countS and countM <= countD:
-    print("menor: martes")   
-
+    diasMenores += "- Martes;"  
+    numeroMenorNacimientos = countM
 
 if countI >= countM and countI >= countL and countI >= countJ and countI >= countV and countI >= countS and countI >= countD:
-    diasMayores += " Lunes"
+    diasMayores += "- Miercoles;"
+    numeroMayorNacimientos = countI
 elif countI <= countM and countI <= countL and countI <= countJ and countI <= countV and countI <= countS and countI <= countD:
-    print("menor: miercoles")   
-
+    diasMenores += "- Miercoles;"   
+    numeroMenorNacimientos = countI
 
 if countJ >= countM and countJ >= countI and countJ >= countL and countJ >= countV and countJ >= countS and countJ >= countD:
-    diasMayores += " Lunes"
+    diasMayores += "- Jueves;"
+    numeroMayorNacimientos = countJ
 elif countJ <= countM and countJ <= countI and countJ <= countL and countJ <= countV and countJ <= countS and countJ <= countD:
-    print("menor: jueves")   
-
+    diasMenores += "- Jueves;"   
+    numeroMenorNacimientos = countJ
 
 if countV >= countM and countV >= countI and countV >= countJ and countV >= countL and countV >= countS and countV >=countD:
-    print("mayor: viernes")
+    diasMayores += "- Viernes;"
+    numeroMayorNacimientos = countV
 elif countV <= countM and countV <= countI and countV <= countJ and countV <= countL and countV <= countS and countV <= countD:
-    print("menor: viernes")   
-
+    diasMenores += "- Viernes;"
+    numeroMenorNacimientos = countV
 
 if countS >= countM and countS >= countI and countS >= countJ and countS >= countV and countS >= countL and countS >= countD:
-    print("mayor: sabado")
+    diasMayores += "- Sabado;"
+    numeroMayorNacimientos = countS
 elif countS <= countM and countS <= countI and countS <=countJ and countS <= countV and countS <= countL and countS <= countD:
-    print("menor: sabado")   
-
+    diasMenores += "- Sabado;"  
+    numeroMenorNacimientos = countS
 
 if countD >= countM and countD >= countI and countD >= countJ and countD >= countV and countD >= countS and countD >= countL:
-    print("mayor: domingo")
+    diasMayores += "- Domingo;"
+    numeroMayorNacimientos = countD
 elif countD <= countM and countD <= countI and countD <= countJ and countD <= countV and countD <= countS and countD <= countL:
-    print("menor: domingo")            
-
+    diasMenores += "- Domingo;"           
+    numeroMenorNacimientos = countD
 
         
 total = countL + countM + countI + countJ + countV + countS + countD
 porcentajeDomingos = (countD/total)*100
-print(porcentajeDomingos)
+print("Dias con más nacimientos: " + diasMayores + " Con " + str(numeroMayorNacimientos) + " nacimientos.")
+print("Dias con menos nacimientos: " + diasMenores + " Con " + str(numeroMenorNacimientos) + " nacimientos.")
+print("Porcentaje de nacimientos en el dia domingo: %" + str(round(porcentajeDomingos,2)))
