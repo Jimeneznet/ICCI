@@ -42,21 +42,6 @@ def pacientes_rango_edad(a,b,incluirExtremos):
     #incluirExtremos = True
     pacientesEnRango = []
 
-    #respuestaValida = False
-    #while respuestaValida == False:
-    #    respuesta = input("¿Desea incluir los extremos de los intervalos en su búsqueda? \n(Respuestas válidas: Si/No | s/n | default: Si -     ").upper() or False
-    #    if(respuesta == "SI" or respuesta == "S" or respuesta == False): #Checkear False nos permite definir un valor para una respuesta vacía
-    #        print(f"Se incluirán en la búsqueda los pacientes que tengan edades {a} y {b}.\n")
-    #        incluirExtremos = True
-    #        respuestaValida = True
-    #    elif (respuesta == "NO" or respuesta == "N"): 
-    #        print(f"No se incluirán en la busqueda los pacientes de edades {a} y {b}.\n")
-    #        incluirExtremos = False
-    #        respuestaValida = True
-    #    else:
-    #        print("No se ha introducido una respuesta correcta\n")
-    #    continue
-
     if(incluirExtremos):
         for paciente in pacientesC1:
             if(int(paciente[1]) >= a and int(paciente[1]) <= b):
