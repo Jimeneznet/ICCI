@@ -1,0 +1,190 @@
+#Este archivo es solo otra forma de hacerlo
+archivo1 = open("1.txt", "r")
+archivo2 = open("2.txt", "r")
+archivo3 = open("3.txt", "r")
+
+pacientesC1 = []
+pacientesC2 = []
+pacientesC3 = []
+
+
+#NOMBRE PACIENTE, EDAD
+for linea in archivo1:
+    l = linea.strip().split(",")
+    l[1] = int(l[1])
+    if(l[1] > 9):
+        pacientesC1.append(l)
+    else:
+        pacientesC2.append(l)
+    #print(l)
+
+#NOMBRE PACIENTE, EDAD
+for linea in archivo2:
+    l = linea.strip().split(",")
+    l[1] = int(l[1])
+    pacientesC2.append(l)
+    #print(l)
+
+#NOMBRE PACIENTE, EDAD
+for linea in archivo3:
+    l = linea.strip().split(",")
+    l[1] = int(l[1])
+    if(l[1] > 9):
+        pacientesC3.append(l)
+    else:
+        pacientesC2.append(l)
+    #print(l)
+
+#Pacientes faltantes
+pacientesNuevosC1 = 0
+pacientesNuevosC2 = 0
+pacientesNuevosC3 = 0
+ingresarC1 = True
+while ingresarC1:
+    pacienteValidoC1 = False
+    while not pacienteValidoC1:
+        print("Ingrese el nuevo paciente de la clínica 1:")
+        nombrePaciente = input("- Nombre de paciente: ") or False
+        if not nombrePaciente or nombrePaciente.isspace():
+            pacienteValidoC1 == False
+            print("No se ha introducido ningún valor.")
+            continue
+        try:
+            edadPaciente = int(input("- Edad de paciente: "))
+            pacienteValidoC1 = True
+            paciente = [nombrePaciente,edadPaciente]
+            pacientesC1.append(paciente)
+            pacientesNuevosC1 += 1
+        except ValueError:
+            print("No se ha introducido un número.")
+            pacienteValidoC1 = False
+    
+    seguirIngresando = True
+    while seguirIngresando:
+        try:
+            respuesta = int(input("¿Desea seguir ingresando pacientes en la clínica 1?\n 1.- Si\n 2.- No\n R: "))
+            if(respuesta > 2 or respuesta < 1):
+                print("No ha ingresado una respuesta válida.")
+            else:
+                seguirIngresando = False
+                if(respuesta == 1):
+                    ingresarC1 = True
+                if(respuesta == 2):
+                    ingresarC1 = False
+
+        except ValueError:
+            print("No ha ingresado una respuesta válida.")
+
+ingresarC2 = True
+while ingresarC2:
+    pacienteValidoC2 = False
+    while not pacienteValidoC2:
+        print("Ingrese el nuevo paciente de la clínica 2:")
+        nombrePaciente = input("- Nombre de paciente: ") or False
+        if not nombrePaciente or nombrePaciente.isspace():
+            pacienteValidoC2 == False
+            print("No se ha introducido ningún valor.")
+            continue
+        try:
+            edadPaciente = int(input("- Edad de paciente: "))
+            pacienteValidoC2 = True
+            paciente = [nombrePaciente,edadPaciente]
+            pacientesC2.append(paciente)
+            pacientesNuevosC2 += 1
+        except ValueError:
+            print("No se ha introducido un número.")
+            pacienteValidoC2 = False
+    
+    seguirIngresando = True
+    while seguirIngresando:
+        try:
+            respuesta = int(input("¿Desea seguir ingresando pacientes en la clínica 2?\n 1.- Si\n 2.- No\n R: "))
+            if(respuesta > 2 or respuesta < 1):
+                print("No ha ingresado una respuesta válida.")
+            else:
+                seguirIngresando = False
+                if(respuesta == 1):
+                    ingresarC2 = True
+                if(respuesta == 2):
+                    ingresarC2 = False
+
+        except ValueError:
+            print("No ha ingresado una respuesta válida.")
+
+ingresarC3 = True
+while ingresarC3:
+    pacienteValidoC3 = False
+    while not pacienteValidoC3:
+        print("Ingrese el nuevo paciente de la clínica 3:")
+        nombrePaciente = input("- Nombre de paciente: ") or False
+        if not nombrePaciente or nombrePaciente.isspace():
+            pacienteValidoC3 == False
+            print("No se ha introducido ningún valor.")
+            continue
+        try:
+            edadPaciente = int(input("- Edad de paciente: "))
+            pacienteValidoC3 = True
+            paciente = [nombrePaciente,edadPaciente]
+            pacientesC3.append(paciente)
+            pacientesNuevosC3 += 1
+        except ValueError:
+            print("No se ha introducido un número.")
+            pacienteValidoC3 = False
+    
+    seguirIngresando = True
+    while seguirIngresando:
+        try:
+            respuesta = int(input("¿Desea seguir ingresando pacientes en la clínica 3?\n 1.- Si\n 2.- No\n R: "))
+            if(respuesta > 2 or respuesta < 1):
+                print("No ha ingresado una respuesta válida.")
+            else:
+                seguirIngresando = False
+                if(respuesta == 1):
+                    ingresarC3 = True
+                if(respuesta == 2):
+                    ingresarC3 = False
+
+        except ValueError:
+            print("No ha ingresado una respuesta válida.")
+
+
+#CLINICA CON MÁS PACIENTES tip: max()
+print("Clinicas con más pacientes:")
+if(len(pacientesC1) == max(len(pacientesC1),len(pacientesC2),len(pacientesC3))):
+    print(f"    - Clinica 1, con {len(pacientesC1)} pacientes.")
+if(len(pacientesC2) == max(len(pacientesC1),len(pacientesC2),len(pacientesC3))):
+    print(f"    - Clinica 2, con {len(pacientesC2)} pacientes.")
+if(len(pacientesC3) == max(len(pacientesC1),len(pacientesC2),len(pacientesC3))):
+    print(f"    - Clinica 3, con {len(pacientesC3)} pacientes.")
+
+#PROMEDIO CLINICA 3
+sumatoriaEdades = 0
+for paciente in pacientesC3:
+    sumatoriaEdades += paciente[1]
+
+print(f"Promedio de edades de Clinica 3: {(sumatoriaEdades/len(pacientesC3))}")
+
+#PACIENTES ENTRE 18 Y 50
+pacientesEnRango = []
+for paciente in pacientesC1:
+    if(18 < paciente[1] < 50):
+        pacientesEnRango.append(paciente)
+
+for paciente in pacientesC2:
+    if(18 < paciente[1] < 50):
+        pacientesEnRango.append(paciente)
+
+for paciente in pacientesC3:
+    if(18 < paciente[1] < 50):
+        pacientesEnRango.append(paciente)
+
+
+pacientesEnRango = sorted(pacientesEnRango, key = lambda x:x[1])
+for paciente in pacientesEnRango:
+    print(paciente)
+
+totalPacientesNuevos = pacientesNuevosC1 + pacientesNuevosC2 + pacientesNuevosC3
+totalPacientes = len(pacientesC1) + len(pacientesC2) + len(pacientesC3)
+print(f"Porcentaje de pacientes faltantes [Global]: {(totalPacientesNuevos/totalPacientes)*100}%")
+
+
